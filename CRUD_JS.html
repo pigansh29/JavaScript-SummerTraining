@@ -1,147 +1,96 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TEST</title>
-</head>
-
-<body>
-    <h1>CRUD in JS</h1>
-    <form action="/abc/">
-        <input type="text" placeholder="Enter Name">
-        <input type="text" placeholder="Enter age">
-        <input type="text" placeholder="Enter Phone no.">
-        <input type="text" placeholder="Enter email id">
-        <input type="radio" name="gender">Male
-        <input type="radio" name="gender">Female
-        <input type="radio" name="gender">Other
-        <select name="" id="">
-            <option value="">None</option>
-            <option value="">Jaipur</option>
-            <option value="">New Delhi</option>
-            <option value="">Dehradun</option>
-            <option value="">Ajmer</option>
-            <option value="">Kota</option>
-            <option value="">Mumbai</option>
-            <option value="">Haldwani</option>
-            <option value="">Jammu</option>
-        </select>
-    </form>
-
-
-
-    <script>
-        // document.getElementById("btn").onclick = function () {
-        //     let val = document.getElementsByClassName("inp");
-        //     let table = document.getElementById("myTable");
-        //     let row = table.insertRow();
-
-        //     for (let i = 0; i < val.length; i++) {
-        //         let cell = row.insertCell(i);
-        //         cell.innerHTML = val[i].value;
-        //         val[i].value = "";
-        //     }
-        // }
-    </script>
-</body>
-
-<!-- </html> -->
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CRUD in JS</title>
-     <style>
+    <style>
         body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
-}
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-.container {
-    margin-top: 30px;
-    width: 50%;
-    margin-left: 100px;
-    overflow: hidden;
-}
+        .container {
+            width: 40%;
+            margin: auto;
+            overflow: hidden;
+        }
 
-h1 {
-    /* text-align: center; */
-    margin: 20px 0;
-}
 
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 20px;
-}
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
 
-form input, form select, form button {
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
+        form input,
+        form select,
+        form button {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        form button {
+            background-color: orange;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
 
-form button {
-    background-color: orange;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
+        form button:hover {
+            background-color: darkorange;
+        }
 
-form button:hover {
-    background-color: darkorange;
-}
+        table {
+            width: 70%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            margin-left: 15%;
 
-table {
-    margin-left: 40px;
-    width: 70%;
+        }
 
-    border-collapse: collapse;
-    margin-top: 20px;
-}
+        table,
+        th,
+        td {
+            border: 1px solid #ccc;
+        }
 
-table, th, td {
-    border: 1px solid #ccc;
-    /* gap:10px; */
-}
+        th,
+        td {
+            padding: 10px;
+            text-align: center;
+        }
 
-th, td {
-    padding: 10px;
-    text-align: center;
-}
+        .actions {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
 
-.actions {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-}
+        .actions button {
+            padding: 5px;
+            border: none;
+            cursor: pointer;
+        }
 
-.actions button {
-    padding: 5px;
-    border: none;
-    cursor: pointer;
-}
+        .actions .edit {
+            color: blue;
+        }
 
-.actions .edit {
-    color: blue;
-}
-
-.actions .delete {
-    color: red;
-}
-
-     </style>
+        .actions .delete {
+            color: red;
+        }
+    </style>
 </head>
 
 <body>
+    <div class="test">
     <div class="container">
         <h1>CRUD in JS</h1>
         <form id="crudForm">
@@ -157,78 +106,101 @@ th, td {
             <select id="hometown" required>
                 <option value="">Select Hometown</option>
                 <option value="Ajmer">Ajmer</option>
-                <option value="Jaipur">Jaipur</option>
-                <option value="Kota">Kota</option>
-                <option value="Bhopal">Bhopal</option>
                 <option value="Delhi">Delhi</option>
                 <option value="Mumbai">Mumbai</option>
+                <option value="Jaipur">Jaipur</option>
+                <option value="Kota">Kota</option>
+                <option value="Dehradun">Dehradun</option>
+                <option value="Punjab">Punjab</option>
+
 
             </select>
             <button type="submit">Submit</button>
         </form>
     </div>
-    <table>
-        <thead>
-            <tr>
-                <th>S.No</th>
-                <th>Name</th>
-                <th>Age</th>
-                <th>Phone</th>
-                <th>Email</th>
-                <th>Gender</th>
-                <th>Hometown</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody id="tableBody">
+    <div class="table">
+        <table>
+            <thead>
+                <tr>
+                    <th>S.No</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Gender</th>
+                    <th>Hometown</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
 
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+    </div>
+    </div>
+
+
     <script>
         let serialNumber = 1;
-const form = document.getElementById('crudForm');
-const tableBody = document.getElementById('tableBody');
+        const form = document.getElementById('crudForm');
+        const tableBody = document.getElementById('tableBody');
 
-form.addEventListener('submit', function (event) {
-    event.preventDefault();
-    addRow();
-    form.reset();
-});
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+            addRow();
+            form.reset();
+        });
 
-function addRow() {
-    const name = document.getElementById('name').value;
-    const age = document.getElementById('age').value;
-    const phone = document.getElementById('phone').value;
-    const email = document.getElementById('email').value;
-    const gender = document.querySelector('input[name="gender"]:checked').value;
-    const hometown = document.getElementById('hometown').value;
-}
+        function addRow() {
+            const name = document.getElementById('name').value;
+            const age = document.getElementById('age').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+            const gender = document.querySelector('input[name="gender"]:checked').value;
+            const hometown = document.getElementById('hometown').value;
 
-function deleteRow(button) {
-    const row = button.parentElement;
-    tableBody.removeChild(row);
-    serialNumber--;
-    updateSerialNumbers();
-}
+            const row = tableBody.insertRow();
+            row.innerHTML = `
+        <td>${serialNumber++}</td>
+        <td>${name}</td>
+        <td>${age}</td>
+        <td>${phone}</td>
+        <td>${email}</td>
+        <td>${gender}</td>
+        <td>${hometown}</td>
+        <td class="actions">
+            <button class="edit" onclick="editRow(this)">✏️</button>
+            <button class="delete" onclick="deleteRow(this)">🗑️</button>
+        </td>
+    `
+        }
 
-function editRow(button) {
-    const row = button.parentElement;
-    document.getElementById('name').value = row.cells[1].innerText;
-    document.getElementById('age').value = row.cells[2].innerText;
-    document.getElementById('phone').value = row.cells[3].innerText;
-    document.getElementById('email').value = row.cells[4].innerText;
-    document.querySelector(input[name="gender"][value="${row.cells[5].innerText}"]).checked = true;
-    document.getElementById('hometown').value = row.cells[6].innerText;
-       
-    deleteRow(button);
-}
+        function deleteRow(button) {
+            const row = button.parentElement.parentElement;
+            tableBody.removeChild(row);
+            serialNumber--;
+            updateSerialNumbers();
+        }
 
-function updateSerialNumbers() {
-    for (let i = 0; i < tableBody.rows.length; i++) {
-        tableBody.rows[i].cells[0].innerText = i + 1;
-    }
-}
+        function editRow(button) {
+            const row = button.parentElement.parentElement;
+            document.getElementById('name').value = row.cells[1].innerText;
+            document.getElementById('age').value = row.cells[2].innerText;
+            document.getElementById('phone').value = row.cells[3].innerText;
+            document.getElementById('email').value = row.cells[4].innerText;
+            document.querySelector(`input[name="gender"][value="${row.cells[5].innerText}"]`).checked = true;
+            document.getElementById('hometown').value = row.cells[6].innerText;
+
+            deleteRow(button);
+        }
+
+        function updateSerialNumbers() {
+            for (let i = 0; i < tableBody.rows.length; i++) {
+                tableBody.rows[i].cells[0].innerText = i + 1;
+            }
+        }
 
     </script>
 </body>
+
 </html>
