@@ -11,12 +11,13 @@
     <button>Submit</button>
    </div> 
    <script>
-    
+
     document.querySelector("button").onclick=function(){
 let val = document.querySelector("input").value;
 let h=document.createElement("h1")
 h.innerHTML=`id=${val}`;
 document.querySelector(".container").append(h);
+
 // h.className="box"
 // document.querySelector("input").value=''
 document.querySelector("input").focus()
