@@ -40,7 +40,6 @@
         let prom = fetch('https://dummyjson.com/products');
         
         prom.then((response)=>{
-
             response.json().then((data)=>{
 
                 for(let i of data.products){
